@@ -4,9 +4,11 @@ extern crate log;
 extern crate diesel;
 extern crate actix_web;
 extern crate serde;
+extern crate chrono;
 #[macro_use]
 extern crate diesel_migrations;
 extern crate dotenv;
+extern crate bcrypt;
 
 pub mod config;
 pub mod errors;

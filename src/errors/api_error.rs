@@ -2,6 +2,7 @@ use serde::Deserialize;
 use serde_json::json;
 use std::fmt;
 use diesel::result::Error as DieselError;
+use bcrypt::BcryptError;
 use actix_web::http::StatusCode;
 use actix_web::{ResponseError, HttpResponse};
 
@@ -29,6 +30,15 @@ impl From<DieselError> for ApiError {
             DieselError::DatabaseError(_, err) => ApiError::new(409, err.message().to_string()),
             DieselError::NotFound => ApiError::new(404, "Record not found".to_string()),
             err => ApiError::new(500, format!("Database error: {}", err)),
+        }
+    }
+}
+
+impl From<BcryptError> for ApiError {
+    fn from(error: BcryptError) -> ApiError {
+        match error {
+            BcryptError::InvalidPassword => ApiError::new(400, "Invalid email or password".to_string()),
+            _ => ApiError::new(500, "Internal server error".to_string()),
         }
     }
 }

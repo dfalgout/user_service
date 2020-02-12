@@ -5,15 +5,17 @@ authors = ["lambda <dustinafalgout@gmail.com>"]
 edition = "2018"
 
 [dependencies]
-diesel = { version = "1.4.3", features = ["postgres", "r2d2", "chrono", "uuid", "serde_json"] }
-diesel_migrations = "1.4.0"
-dotenv = "0.15.0"
-actix-web = "2.0.0"
-actix-rt = "1.0.0"
-serde = "1.0.104"
-serde_json = "1.0.47"
+diesel = { version = "1.4", features = ["postgres", "r2d2", "chrono", "uuid"] }
+diesel_migrations = "1.4"
+dotenv = "0.15"
+actix-web = "2.0"
+actix-rt = "1.0"
+serde = "1.0"
+serde_json = "1.0"
 uuid = { version = "0.6.5", features = ["v4", "serde"] }
-log = "0.4.8"
-env_logger = "0.7.1"
-lazy_static = "1.4.0"
-listenfd = "0.3.3"
+chrono = { version = "0.4", features = ["serde"] }
+log = "0.4"
+env_logger = "0.7"
+lazy_static = "1.4"
+listenfd = "0.3"
+bcrypt = "0.6"

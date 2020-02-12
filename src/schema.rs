@@ -6,5 +6,7 @@ table! {
         last_name -> Text,
         email -> Text,
         password -> Text,
+        created_at -> Timestamp,
+        updated_at -> Timestamp,
     }
 }
