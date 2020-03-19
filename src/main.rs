@@ -16,7 +16,7 @@ pub mod schema;
 pub mod models;
 pub mod handlers;
 
-use actix_web::{App, HttpServer};
+use actix_web::{App, HttpServer, middleware};
 use listenfd::ListenFd;
 use std::env;
 use config::database;
@@ -31,6 +31,7 @@ async fn main() -> std::io::Result<()> {
     let mut listenfd = ListenFd::from_env();
     let mut server = HttpServer::new(move || {
         App::new()
+            .wrap(middleware::Logger::default())
             .configure(handlers::user_handler::init_routes)
     });
 
